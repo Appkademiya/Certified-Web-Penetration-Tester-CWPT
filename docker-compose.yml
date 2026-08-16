@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  cwpt-web:
+    image: appkademiya/cwpt-web:latest
+    ports:
+      - "8080:80"
+    networks:
+      - web_net
+      - internal_db_net
+
+  cwpt-db:
+    image: appkademiya/cwpt-db:latest
+    networks:
+      - internal_db_net 
+
+networks:
+  web_net:
+    driver: bridge
+  internal_db_net:
+    internal: true
